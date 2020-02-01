@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 15.0.0 Build 145 04/22/2015 SJ Web Edition"
 
--- DATE "02/01/2020 17:14:24"
+-- DATE "02/01/2020 17:20:50"
 
 -- 
 -- Device: Altera EP4CE30F23C7 Package FBGA484
@@ -107,7 +107,6 @@ SIGNAL \inst|inst4|inst7|ALT_INV_5~0_combout\ : std_logic;
 SIGNAL \inst|inst|inst7|ALT_INV_5~1_combout\ : std_logic;
 SIGNAL \inst|inst2|inst7|ALT_INV_5~1_combout\ : std_logic;
 SIGNAL \inst|inst3|inst7|ALT_INV_5~1_combout\ : std_logic;
-SIGNAL \inst|inst3|inst|ALT_INV_inst5~0_combout\ : std_logic;
 
 BEGIN
 
@@ -123,7 +122,6 @@ ww_devpor <= devpor;
 \inst|inst|inst7|ALT_INV_5~1_combout\ <= NOT \inst|inst|inst7|5~1_combout\;
 \inst|inst2|inst7|ALT_INV_5~1_combout\ <= NOT \inst|inst2|inst7|5~1_combout\;
 \inst|inst3|inst7|ALT_INV_5~1_combout\ <= NOT \inst|inst3|inst7|5~1_combout\;
-\inst|inst3|inst|ALT_INV_inst5~0_combout\ <= NOT \inst|inst3|inst|inst5~0_combout\;
 
 -- Location: IOOBUF_X0_Y31_N23
 \LEDM_C[4]~output\ : cycloneive_io_obuf
@@ -133,7 +131,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \inst|inst3|inst|ALT_INV_inst5~0_combout\,
+	i => \inst|inst3|inst|inst5~0_combout\,
 	devoe => ww_devoe,
 	o => \LEDM_C[4]~output_o\);
 
