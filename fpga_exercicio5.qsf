@@ -67,7 +67,7 @@ set_location_assignment PIN_W21 -to SW[2]
 set_location_assignment PIN_W22 -to SW[1]
 set_location_assignment PIN_V21 -to SW[0]
 set_location_assignment PIN_D6 -to LED_G
-set_location_assignment PIN_D7 -to LED_R -comment S1
+set_location_assignment PIN_D7 -to LED_R
 set_location_assignment PIN_E7 -to LED_B
 set_location_assignment PIN_H11 -to LEDM_R[7]
 set_location_assignment PIN_G8 -to LEDM_R[6]
@@ -321,6 +321,22 @@ set_location_assignment PIN_J1 -to SDRAM_WE_N
 set_location_assignment PIN_B8 -to USB_POWEREN_N
 set_location_assignment PIN_A3 -to USB_RXF_N
 set_location_assignment PIN_B3 -to USB_TXE_N
+set_location_assignment PIN_H19 -to GPIO0_SA[7]
+set_location_assignment PIN_F20 -to GPIO0_SA[6]
+set_location_assignment PIN_J22 -to GPIO0_SA[5]
+set_location_assignment PIN_H21 -to GPIO0_SA[4]
+set_location_assignment PIN_F19 -to GPIO0_SA[3]
+set_location_assignment PIN_F16 -to GPIO0_SA[2]
+set_location_assignment PIN_H22 -to GPIO0_SA[1]
+set_location_assignment PIN_E16 -to GPIO0_SA[0]
+set_location_assignment PIN_M21 -to GPIO0_SB[7]
+set_location_assignment PIN_J18 -to GPIO0_SB[6]
+set_location_assignment PIN_L21 -to GPIO0_SB[5]
+set_location_assignment PIN_L22 -to GPIO0_SB[4]
+set_location_assignment PIN_H18 -to GPIO0_SB[3]
+set_location_assignment PIN_H20 -to GPIO0_SB[2]
+set_location_assignment PIN_K21 -to GPIO0_SB[1]
+set_location_assignment PIN_J21 -to GPIO0_SB[0]
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
@@ -332,12 +348,8 @@ set_global_assignment -name BDF_FILE ula_simples.bdf
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
 set_global_assignment -name CDF_FILE output_files/Chain1.cdf
 set_global_assignment -name BDF_FILE ula_4bits.bdf
-set_instance_assignment -name ALIAS GPIO0_D[0] -to GPIO0_SA[0]
-set_instance_assignment -name ALIAS GPIO0_D[1] -to GPIO0_SA[1]
-set_instance_assignment -name ALIAS GPIO0_D[2] -to GPIO0_SA[2]
-set_instance_assignment -name ALIAS GPIO0_D[3] -to GPIO0_SA[3]
-set_instance_assignment -name ALIAS GPIO0_D[8] -to GPIO0_SB[0]
-set_instance_assignment -name ALIAS GPIO0_D[9] -to GPIO0_SB[1]
-set_instance_assignment -name ALIAS GPIO0_D[10] -to GPIO0_SB[2]
-set_instance_assignment -name ALIAS GPIO0_D[11] -to GPIO0_SB[3]
+
+
+
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
