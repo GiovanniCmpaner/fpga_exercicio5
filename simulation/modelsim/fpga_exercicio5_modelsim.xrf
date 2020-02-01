@@ -7,6 +7,7 @@ source_file = 1, C:/Users/Aluno/Desktop/fpga_exercicio5/ula_simples.bdf
 source_file = 1, C:/Users/Aluno/Desktop/fpga_exercicio5/output_files/Chain1.cdf
 source_file = 1, C:/Users/Aluno/Desktop/fpga_exercicio5/ula_4bits.bdf
 source_file = 1, C:/Users/Aluno/Desktop/fpga_exercicio5/fpga_exercicio5.bdf
+source_file = 1, c:/altera/15.0/quartus/libraries/megafunctions/lpm_inv.tdf
 source_file = 1, c:/altera/15.0/quartus/libraries/others/maxplus2/21mux.bdf
 design_name = fpga_exercicio5
 instance = comp, \LEDM_C[3]~output\, LEDM_C[3]~output, fpga_exercicio5, 1

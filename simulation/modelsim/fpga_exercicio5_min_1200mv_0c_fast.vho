@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 15.0.0 Build 145 04/22/2015 SJ Web Edition"
 
--- DATE "02/01/2020 16:48:00"
+-- DATE "02/01/2020 17:07:49"
 
 -- 
 -- Device: Altera EP4CE30F23C7 Package FBGA484
@@ -100,6 +100,10 @@ SIGNAL \inst|inst2|inst7|5~1_combout\ : std_logic;
 SIGNAL \inst|inst|inst7|5~0_combout\ : std_logic;
 SIGNAL \inst|inst|inst7|5~1_combout\ : std_logic;
 SIGNAL \inst|inst4|inst7|5~0_combout\ : std_logic;
+SIGNAL \inst|inst4|inst7|ALT_INV_5~0_combout\ : std_logic;
+SIGNAL \inst|inst|inst7|ALT_INV_5~1_combout\ : std_logic;
+SIGNAL \inst|inst2|inst7|ALT_INV_5~1_combout\ : std_logic;
+SIGNAL \inst|inst3|inst7|ALT_INV_5~2_combout\ : std_logic;
 
 BEGIN
 
@@ -111,6 +115,10 @@ LEDM_R <= ww_LEDM_R;
 ww_devoe <= devoe;
 ww_devclrn <= devclrn;
 ww_devpor <= devpor;
+\inst|inst4|inst7|ALT_INV_5~0_combout\ <= NOT \inst|inst4|inst7|5~0_combout\;
+\inst|inst|inst7|ALT_INV_5~1_combout\ <= NOT \inst|inst|inst7|5~1_combout\;
+\inst|inst2|inst7|ALT_INV_5~1_combout\ <= NOT \inst|inst2|inst7|5~1_combout\;
+\inst|inst3|inst7|ALT_INV_5~2_combout\ <= NOT \inst|inst3|inst7|5~2_combout\;
 
 -- Location: IOOBUF_X0_Y34_N16
 \LEDM_C[3]~output\ : cycloneive_io_obuf
@@ -120,7 +128,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \inst|inst3|inst7|5~2_combout\,
+	i => \inst|inst3|inst7|ALT_INV_5~2_combout\,
 	devoe => ww_devoe,
 	o => \LEDM_C[3]~output_o\);
 
@@ -132,7 +140,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \inst|inst2|inst7|5~1_combout\,
+	i => \inst|inst2|inst7|ALT_INV_5~1_combout\,
 	devoe => ww_devoe,
 	o => \LEDM_C[2]~output_o\);
 
@@ -144,7 +152,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \inst|inst|inst7|5~1_combout\,
+	i => \inst|inst|inst7|ALT_INV_5~1_combout\,
 	devoe => ww_devoe,
 	o => \LEDM_C[1]~output_o\);
 
@@ -156,7 +164,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \inst|inst4|inst7|5~0_combout\,
+	i => \inst|inst4|inst7|ALT_INV_5~0_combout\,
 	devoe => ww_devoe,
 	o => \LEDM_C[0]~output_o\);
 
