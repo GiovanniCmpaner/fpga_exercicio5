@@ -17,7 +17,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 15.0.0 Build 145 04/22/2015 SJ Web Edition"
 
--- DATE "02/01/2020 17:07:49"
+-- DATE "02/01/2020 17:14:24"
 
 -- 
 -- Device: Altera EP4CE30F23C7 Package FBGA484
@@ -34,7 +34,7 @@ USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY 	fpga_exercicio5 IS
     PORT (
-	LEDM_C : OUT std_logic_vector(3 DOWNTO 0);
+	LEDM_C : OUT std_logic_vector(4 DOWNTO 0);
 	GPIO0_SA : IN std_logic_vector(3 DOWNTO 0);
 	GPIO0_SB : IN std_logic_vector(3 DOWNTO 0);
 	SW : IN std_logic_vector(1 DOWNTO 0);
@@ -43,21 +43,22 @@ ENTITY 	fpga_exercicio5 IS
 END fpga_exercicio5;
 
 -- Design Ports Information
+-- LEDM_C[4]	=>  Location: PIN_L8,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- LEDM_C[3]	=>  Location: PIN_J8,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- LEDM_C[2]	=>  Location: PIN_K8,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- LEDM_C[1]	=>  Location: PIN_J6,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- LEDM_C[0]	=>  Location: PIN_J7,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- LEDM_R[0]	=>  Location: PIN_F10,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- GPIO0_SA[3]	=>  Location: PIN_F19,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- SW[0]	=>  Location: PIN_V21,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- GPIO0_SB[3]	=>  Location: PIN_H18,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- SW[1]	=>  Location: PIN_W22,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- GPIO0_SA[2]	=>  Location: PIN_F16,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- GPIO0_SB[2]	=>  Location: PIN_H20,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- GPIO0_SA[1]	=>  Location: PIN_H22,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- GPIO0_SB[1]	=>  Location: PIN_K21,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- SW[0]	=>  Location: PIN_V21,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- GPIO0_SA[0]	=>  Location: PIN_E16,	 I/O Standard: 2.5 V,	 Current Strength: Default
 -- GPIO0_SB[0]	=>  Location: PIN_J21,	 I/O Standard: 2.5 V,	 Current Strength: Default
--- GPIO0_SA[2]	=>  Location: PIN_F16,	 I/O Standard: 2.5 V,	 Current Strength: Default
+-- SW[1]	=>  Location: PIN_W22,	 I/O Standard: 2.5 V,	 Current Strength: Default
 
 
 ARCHITECTURE structure OF fpga_exercicio5 IS
@@ -70,31 +71,33 @@ SIGNAL devpor : std_logic := '1';
 SIGNAL ww_devoe : std_logic;
 SIGNAL ww_devclrn : std_logic;
 SIGNAL ww_devpor : std_logic;
-SIGNAL ww_LEDM_C : std_logic_vector(3 DOWNTO 0);
+SIGNAL ww_LEDM_C : std_logic_vector(4 DOWNTO 0);
 SIGNAL ww_GPIO0_SA : std_logic_vector(3 DOWNTO 0);
 SIGNAL ww_GPIO0_SB : std_logic_vector(3 DOWNTO 0);
 SIGNAL ww_SW : std_logic_vector(1 DOWNTO 0);
 SIGNAL ww_LEDM_R : std_logic_vector(0 DOWNTO 0);
+SIGNAL \LEDM_C[4]~output_o\ : std_logic;
 SIGNAL \LEDM_C[3]~output_o\ : std_logic;
 SIGNAL \LEDM_C[2]~output_o\ : std_logic;
 SIGNAL \LEDM_C[1]~output_o\ : std_logic;
 SIGNAL \LEDM_C[0]~output_o\ : std_logic;
 SIGNAL \LEDM_R[0]~output_o\ : std_logic;
-SIGNAL \SW[1]~input_o\ : std_logic;
-SIGNAL \GPIO0_SB[3]~input_o\ : std_logic;
-SIGNAL \GPIO0_SA[0]~input_o\ : std_logic;
 SIGNAL \SW[0]~input_o\ : std_logic;
+SIGNAL \GPIO0_SB[3]~input_o\ : std_logic;
+SIGNAL \GPIO0_SA[3]~input_o\ : std_logic;
+SIGNAL \GPIO0_SA[2]~input_o\ : std_logic;
+SIGNAL \GPIO0_SB[2]~input_o\ : std_logic;
+SIGNAL \GPIO0_SA[0]~input_o\ : std_logic;
 SIGNAL \GPIO0_SB[0]~input_o\ : std_logic;
 SIGNAL \inst|inst|inst|inst5~0_combout\ : std_logic;
-SIGNAL \GPIO0_SB[1]~input_o\ : std_logic;
 SIGNAL \GPIO0_SA[1]~input_o\ : std_logic;
+SIGNAL \GPIO0_SB[1]~input_o\ : std_logic;
 SIGNAL \inst|inst|inst|inst5~1_combout\ : std_logic;
-SIGNAL \GPIO0_SA[2]~input_o\ : std_logic;
+SIGNAL \inst|inst2|inst|inst5~0_combout\ : std_logic;
+SIGNAL \inst|inst3|inst|inst5~0_combout\ : std_logic;
+SIGNAL \SW[1]~input_o\ : std_logic;
 SIGNAL \inst|inst3|inst7|5~0_combout\ : std_logic;
-SIGNAL \GPIO0_SB[2]~input_o\ : std_logic;
 SIGNAL \inst|inst3|inst7|5~1_combout\ : std_logic;
-SIGNAL \GPIO0_SA[3]~input_o\ : std_logic;
-SIGNAL \inst|inst3|inst7|5~2_combout\ : std_logic;
 SIGNAL \inst|inst2|inst7|5~0_combout\ : std_logic;
 SIGNAL \inst|inst2|inst7|5~1_combout\ : std_logic;
 SIGNAL \inst|inst|inst7|5~0_combout\ : std_logic;
@@ -103,7 +106,8 @@ SIGNAL \inst|inst4|inst7|5~0_combout\ : std_logic;
 SIGNAL \inst|inst4|inst7|ALT_INV_5~0_combout\ : std_logic;
 SIGNAL \inst|inst|inst7|ALT_INV_5~1_combout\ : std_logic;
 SIGNAL \inst|inst2|inst7|ALT_INV_5~1_combout\ : std_logic;
-SIGNAL \inst|inst3|inst7|ALT_INV_5~2_combout\ : std_logic;
+SIGNAL \inst|inst3|inst7|ALT_INV_5~1_combout\ : std_logic;
+SIGNAL \inst|inst3|inst|ALT_INV_inst5~0_combout\ : std_logic;
 
 BEGIN
 
@@ -118,7 +122,20 @@ ww_devpor <= devpor;
 \inst|inst4|inst7|ALT_INV_5~0_combout\ <= NOT \inst|inst4|inst7|5~0_combout\;
 \inst|inst|inst7|ALT_INV_5~1_combout\ <= NOT \inst|inst|inst7|5~1_combout\;
 \inst|inst2|inst7|ALT_INV_5~1_combout\ <= NOT \inst|inst2|inst7|5~1_combout\;
-\inst|inst3|inst7|ALT_INV_5~2_combout\ <= NOT \inst|inst3|inst7|5~2_combout\;
+\inst|inst3|inst7|ALT_INV_5~1_combout\ <= NOT \inst|inst3|inst7|5~1_combout\;
+\inst|inst3|inst|ALT_INV_inst5~0_combout\ <= NOT \inst|inst3|inst|inst5~0_combout\;
+
+-- Location: IOOBUF_X0_Y31_N23
+\LEDM_C[4]~output\ : cycloneive_io_obuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	open_drain_output => "false")
+-- pragma translate_on
+PORT MAP (
+	i => \inst|inst3|inst|ALT_INV_inst5~0_combout\,
+	devoe => ww_devoe,
+	o => \LEDM_C[4]~output_o\);
 
 -- Location: IOOBUF_X0_Y34_N16
 \LEDM_C[3]~output\ : cycloneive_io_obuf
@@ -128,7 +145,7 @@ GENERIC MAP (
 	open_drain_output => "false")
 -- pragma translate_on
 PORT MAP (
-	i => \inst|inst3|inst7|ALT_INV_5~2_combout\,
+	i => \inst|inst3|inst7|ALT_INV_5~1_combout\,
 	devoe => ww_devoe,
 	o => \LEDM_C[3]~output_o\);
 
@@ -180,16 +197,16 @@ PORT MAP (
 	devoe => ww_devoe,
 	o => \LEDM_R[0]~output_o\);
 
--- Location: IOIBUF_X67_Y7_N1
-\SW[1]~input\ : cycloneive_io_ibuf
+-- Location: IOIBUF_X67_Y10_N1
+\SW[0]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_SW(1),
-	o => \SW[1]~input_o\);
+	i => ww_SW(0),
+	o => \SW[0]~input_o\);
 
 -- Location: IOIBUF_X67_Y35_N1
 \GPIO0_SB[3]~input\ : cycloneive_io_ibuf
@@ -202,6 +219,39 @@ PORT MAP (
 	i => ww_GPIO0_SB(3),
 	o => \GPIO0_SB[3]~input_o\);
 
+-- Location: IOIBUF_X67_Y37_N15
+\GPIO0_SA[3]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_GPIO0_SA(3),
+	o => \GPIO0_SA[3]~input_o\);
+
+-- Location: IOIBUF_X65_Y43_N22
+\GPIO0_SA[2]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_GPIO0_SA(2),
+	o => \GPIO0_SA[2]~input_o\);
+
+-- Location: IOIBUF_X67_Y34_N22
+\GPIO0_SB[2]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_GPIO0_SB(2),
+	o => \GPIO0_SB[2]~input_o\);
+
 -- Location: IOIBUF_X65_Y43_N29
 \GPIO0_SA[0]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
@@ -212,17 +262,6 @@ GENERIC MAP (
 PORT MAP (
 	i => ww_GPIO0_SA(0),
 	o => \GPIO0_SA[0]~input_o\);
-
--- Location: IOIBUF_X67_Y10_N1
-\SW[0]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_SW(0),
-	o => \SW[0]~input_o\);
 
 -- Location: IOIBUF_X67_Y28_N15
 \GPIO0_SB[0]~input\ : cycloneive_io_ibuf
@@ -235,7 +274,7 @@ PORT MAP (
 	i => ww_GPIO0_SB(0),
 	o => \GPIO0_SB[0]~input_o\);
 
--- Location: LCCOMB_X66_Y30_N16
+-- Location: LCCOMB_X66_Y30_N8
 \inst|inst|inst|inst5~0\ : cycloneive_lcell_comb
 -- Equation(s):
 -- \inst|inst|inst|inst5~0_combout\ = (\GPIO0_SB[0]~input_o\ & ((!\SW[0]~input_o\))) # (!\GPIO0_SB[0]~input_o\ & (\GPIO0_SA[0]~input_o\))
@@ -251,17 +290,6 @@ PORT MAP (
 	datad => \GPIO0_SB[0]~input_o\,
 	combout => \inst|inst|inst|inst5~0_combout\);
 
--- Location: IOIBUF_X67_Y27_N15
-\GPIO0_SB[1]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_GPIO0_SB(1),
-	o => \GPIO0_SB[1]~input_o\);
-
 -- Location: IOIBUF_X67_Y28_N8
 \GPIO0_SA[1]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
@@ -273,126 +301,132 @@ PORT MAP (
 	i => ww_GPIO0_SA(1),
 	o => \GPIO0_SA[1]~input_o\);
 
--- Location: LCCOMB_X66_Y30_N10
-\inst|inst|inst|inst5~1\ : cycloneive_lcell_comb
--- Equation(s):
--- \inst|inst|inst|inst5~1_combout\ = (\inst|inst|inst|inst5~0_combout\ & ((\GPIO0_SA[1]~input_o\ & ((!\SW[0]~input_o\))) # (!\GPIO0_SA[1]~input_o\ & (\GPIO0_SB[1]~input_o\)))) # (!\inst|inst|inst|inst5~0_combout\ & ((\GPIO0_SA[1]~input_o\ & 
--- (\GPIO0_SB[1]~input_o\)) # (!\GPIO0_SA[1]~input_o\ & ((\SW[0]~input_o\)))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "0100111011011000",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \inst|inst|inst|inst5~0_combout\,
-	datab => \GPIO0_SB[1]~input_o\,
-	datac => \SW[0]~input_o\,
-	datad => \GPIO0_SA[1]~input_o\,
-	combout => \inst|inst|inst|inst5~1_combout\);
-
--- Location: IOIBUF_X65_Y43_N22
-\GPIO0_SA[2]~input\ : cycloneive_io_ibuf
+-- Location: IOIBUF_X67_Y27_N15
+\GPIO0_SB[1]~input\ : cycloneive_io_ibuf
 -- pragma translate_off
 GENERIC MAP (
 	bus_hold => "false",
 	simulate_z_as => "z")
 -- pragma translate_on
 PORT MAP (
-	i => ww_GPIO0_SA(2),
-	o => \GPIO0_SA[2]~input_o\);
+	i => ww_GPIO0_SB(1),
+	o => \GPIO0_SB[1]~input_o\);
 
--- Location: LCCOMB_X66_Y30_N4
-\inst|inst3|inst7|5~0\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X66_Y30_N10
+\inst|inst|inst|inst5~1\ : cycloneive_lcell_comb
 -- Equation(s):
--- \inst|inst3|inst7|5~0_combout\ = \SW[0]~input_o\ $ (((\GPIO0_SA[2]~input_o\ & !\SW[1]~input_o\)))
+-- \inst|inst|inst|inst5~1_combout\ = (\inst|inst|inst|inst5~0_combout\ & ((\GPIO0_SA[1]~input_o\ & (!\SW[0]~input_o\)) # (!\GPIO0_SA[1]~input_o\ & ((\GPIO0_SB[1]~input_o\))))) # (!\inst|inst|inst|inst5~0_combout\ & ((\GPIO0_SA[1]~input_o\ & 
+-- ((\GPIO0_SB[1]~input_o\))) # (!\GPIO0_SA[1]~input_o\ & (\SW[0]~input_o\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100011011000110",
+	lut_mask => "0111111001000010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \SW[0]~input_o\,
+	datab => \inst|inst|inst|inst5~0_combout\,
+	datac => \GPIO0_SA[1]~input_o\,
+	datad => \GPIO0_SB[1]~input_o\,
+	combout => \inst|inst|inst|inst5~1_combout\);
+
+-- Location: LCCOMB_X66_Y30_N12
+\inst|inst2|inst|inst5~0\ : cycloneive_lcell_comb
+-- Equation(s):
+-- \inst|inst2|inst|inst5~0_combout\ = (\GPIO0_SB[2]~input_o\ & ((\inst|inst|inst|inst5~1_combout\) # (\GPIO0_SA[2]~input_o\ $ (\SW[0]~input_o\)))) # (!\GPIO0_SB[2]~input_o\ & (\inst|inst|inst|inst5~1_combout\ & (\GPIO0_SA[2]~input_o\ $ (\SW[0]~input_o\))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1101111001001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \GPIO0_SA[2]~input_o\,
-	datab => \SW[0]~input_o\,
-	datac => \SW[1]~input_o\,
-	combout => \inst|inst3|inst7|5~0_combout\);
+	datab => \GPIO0_SB[2]~input_o\,
+	datac => \SW[0]~input_o\,
+	datad => \inst|inst|inst|inst5~1_combout\,
+	combout => \inst|inst2|inst|inst5~0_combout\);
 
--- Location: IOIBUF_X67_Y34_N22
-\GPIO0_SB[2]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_GPIO0_SB(2),
-	o => \GPIO0_SB[2]~input_o\);
-
--- Location: LCCOMB_X66_Y30_N14
-\inst|inst3|inst7|5~1\ : cycloneive_lcell_comb
+-- Location: LCCOMB_X66_Y30_N6
+\inst|inst3|inst|inst5~0\ : cycloneive_lcell_comb
 -- Equation(s):
--- \inst|inst3|inst7|5~1_combout\ = (\inst|inst|inst|inst5~1_combout\ & ((\inst|inst3|inst7|5~0_combout\) # ((!\SW[1]~input_o\ & \GPIO0_SB[2]~input_o\)))) # (!\inst|inst|inst|inst5~1_combout\ & (\inst|inst3|inst7|5~0_combout\ & ((\SW[1]~input_o\) # 
--- (\GPIO0_SB[2]~input_o\))))
+-- \inst|inst3|inst|inst5~0_combout\ = (\GPIO0_SB[3]~input_o\ & ((\inst|inst2|inst|inst5~0_combout\) # (\SW[0]~input_o\ $ (\GPIO0_SA[3]~input_o\)))) # (!\GPIO0_SB[3]~input_o\ & (\inst|inst2|inst|inst5~0_combout\ & (\SW[0]~input_o\ $ 
+-- (\GPIO0_SA[3]~input_o\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100111011001000",
+	lut_mask => "1101111001001000",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
-	dataa => \inst|inst|inst|inst5~1_combout\,
-	datab => \inst|inst3|inst7|5~0_combout\,
-	datac => \SW[1]~input_o\,
-	datad => \GPIO0_SB[2]~input_o\,
-	combout => \inst|inst3|inst7|5~1_combout\);
-
--- Location: IOIBUF_X67_Y37_N15
-\GPIO0_SA[3]~input\ : cycloneive_io_ibuf
--- pragma translate_off
-GENERIC MAP (
-	bus_hold => "false",
-	simulate_z_as => "z")
--- pragma translate_on
-PORT MAP (
-	i => ww_GPIO0_SA(3),
-	o => \GPIO0_SA[3]~input_o\);
-
--- Location: LCCOMB_X66_Y34_N24
-\inst|inst3|inst7|5~2\ : cycloneive_lcell_comb
--- Equation(s):
--- \inst|inst3|inst7|5~2_combout\ = (\SW[1]~input_o\ & ((\GPIO0_SB[3]~input_o\ & ((\GPIO0_SA[3]~input_o\) # (!\inst|inst3|inst7|5~1_combout\))) # (!\GPIO0_SB[3]~input_o\ & (!\inst|inst3|inst7|5~1_combout\ & \GPIO0_SA[3]~input_o\)))) # (!\SW[1]~input_o\ & 
--- (\GPIO0_SB[3]~input_o\ $ (\inst|inst3|inst7|5~1_combout\ $ (\GPIO0_SA[3]~input_o\))))
-
--- pragma translate_off
-GENERIC MAP (
-	lut_mask => "1100101100011100",
-	sum_lutc_input => "datac")
--- pragma translate_on
-PORT MAP (
-	dataa => \SW[1]~input_o\,
+	dataa => \SW[0]~input_o\,
 	datab => \GPIO0_SB[3]~input_o\,
-	datac => \inst|inst3|inst7|5~1_combout\,
-	datad => \GPIO0_SA[3]~input_o\,
-	combout => \inst|inst3|inst7|5~2_combout\);
+	datac => \GPIO0_SA[3]~input_o\,
+	datad => \inst|inst2|inst|inst5~0_combout\,
+	combout => \inst|inst3|inst|inst5~0_combout\);
+
+-- Location: IOIBUF_X67_Y7_N1
+\SW[1]~input\ : cycloneive_io_ibuf
+-- pragma translate_off
+GENERIC MAP (
+	bus_hold => "false",
+	simulate_z_as => "z")
+-- pragma translate_on
+PORT MAP (
+	i => ww_SW(1),
+	o => \SW[1]~input_o\);
 
 -- Location: LCCOMB_X66_Y30_N0
+\inst|inst3|inst7|5~0\ : cycloneive_lcell_comb
+-- Equation(s):
+-- \inst|inst3|inst7|5~0_combout\ = (\SW[1]~input_o\ & ((\SW[0]~input_o\))) # (!\SW[1]~input_o\ & (\inst|inst2|inst|inst5~0_combout\))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1110001011100010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \inst|inst2|inst|inst5~0_combout\,
+	datab => \SW[1]~input_o\,
+	datac => \SW[0]~input_o\,
+	combout => \inst|inst3|inst7|5~0_combout\);
+
+-- Location: LCCOMB_X66_Y30_N18
+\inst|inst3|inst7|5~1\ : cycloneive_lcell_comb
+-- Equation(s):
+-- \inst|inst3|inst7|5~1_combout\ = (\inst|inst3|inst7|5~0_combout\ & ((\GPIO0_SA[3]~input_o\ & ((\GPIO0_SB[3]~input_o\))) # (!\GPIO0_SA[3]~input_o\ & (!\SW[1]~input_o\ & !\GPIO0_SB[3]~input_o\)))) # (!\inst|inst3|inst7|5~0_combout\ & ((\GPIO0_SA[3]~input_o\ 
+-- & ((\SW[1]~input_o\) # (!\GPIO0_SB[3]~input_o\))) # (!\GPIO0_SA[3]~input_o\ & ((\GPIO0_SB[3]~input_o\)))))
+
+-- pragma translate_off
+GENERIC MAP (
+	lut_mask => "1110010101010010",
+	sum_lutc_input => "datac")
+-- pragma translate_on
+PORT MAP (
+	dataa => \inst|inst3|inst7|5~0_combout\,
+	datab => \SW[1]~input_o\,
+	datac => \GPIO0_SA[3]~input_o\,
+	datad => \GPIO0_SB[3]~input_o\,
+	combout => \inst|inst3|inst7|5~1_combout\);
+
+-- Location: LCCOMB_X66_Y30_N20
 \inst|inst2|inst7|5~0\ : cycloneive_lcell_comb
 -- Equation(s):
 -- \inst|inst2|inst7|5~0_combout\ = (\SW[1]~input_o\ & ((\SW[0]~input_o\))) # (!\SW[1]~input_o\ & (\inst|inst|inst|inst5~1_combout\))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100101011001010",
+	lut_mask => "1110001011100010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \inst|inst|inst|inst5~1_combout\,
-	datab => \SW[0]~input_o\,
-	datac => \SW[1]~input_o\,
+	datab => \SW[1]~input_o\,
+	datac => \SW[0]~input_o\,
 	combout => \inst|inst2|inst7|5~0_combout\);
 
--- Location: LCCOMB_X66_Y30_N26
+-- Location: LCCOMB_X66_Y30_N22
 \inst|inst2|inst7|5~1\ : cycloneive_lcell_comb
 -- Equation(s):
 -- \inst|inst2|inst7|5~1_combout\ = (\GPIO0_SA[2]~input_o\ & ((\inst|inst2|inst7|5~0_combout\ & ((\GPIO0_SB[2]~input_o\))) # (!\inst|inst2|inst7|5~0_combout\ & ((\SW[1]~input_o\) # (!\GPIO0_SB[2]~input_o\))))) # (!\GPIO0_SA[2]~input_o\ & 
@@ -400,68 +434,70 @@ PORT MAP (
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1011100100100110",
+	lut_mask => "1010110100011010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \GPIO0_SA[2]~input_o\,
-	datab => \inst|inst2|inst7|5~0_combout\,
-	datac => \SW[1]~input_o\,
+	datab => \SW[1]~input_o\,
+	datac => \inst|inst2|inst7|5~0_combout\,
 	datad => \GPIO0_SB[2]~input_o\,
 	combout => \inst|inst2|inst7|5~1_combout\);
 
--- Location: LCCOMB_X66_Y30_N12
+-- Location: LCCOMB_X66_Y30_N24
 \inst|inst|inst7|5~0\ : cycloneive_lcell_comb
 -- Equation(s):
 -- \inst|inst|inst7|5~0_combout\ = (\SW[1]~input_o\ & (((\SW[0]~input_o\)))) # (!\SW[1]~input_o\ & ((\GPIO0_SB[0]~input_o\) # (\GPIO0_SA[0]~input_o\ $ (\SW[0]~input_o\))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1100111111000110",
+	lut_mask => "1111001111010010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \GPIO0_SA[0]~input_o\,
-	datab => \SW[0]~input_o\,
-	datac => \SW[1]~input_o\,
+	datab => \SW[1]~input_o\,
+	datac => \SW[0]~input_o\,
 	datad => \GPIO0_SB[0]~input_o\,
 	combout => \inst|inst|inst7|5~0_combout\);
 
--- Location: LCCOMB_X66_Y30_N6
+-- Location: LCCOMB_X66_Y30_N26
 \inst|inst|inst7|5~1\ : cycloneive_lcell_comb
 -- Equation(s):
--- \inst|inst|inst7|5~1_combout\ = (\inst|inst|inst7|5~0_combout\ & ((\GPIO0_SB[1]~input_o\ & ((\GPIO0_SA[1]~input_o\))) # (!\GPIO0_SB[1]~input_o\ & (!\SW[1]~input_o\ & !\GPIO0_SA[1]~input_o\)))) # (!\inst|inst|inst7|5~0_combout\ & ((\GPIO0_SB[1]~input_o\ & 
--- ((\SW[1]~input_o\) # (!\GPIO0_SA[1]~input_o\))) # (!\GPIO0_SB[1]~input_o\ & ((\GPIO0_SA[1]~input_o\)))))
+-- \inst|inst|inst7|5~1_combout\ = (\inst|inst|inst7|5~0_combout\ & ((\GPIO0_SA[1]~input_o\ & ((\GPIO0_SB[1]~input_o\))) # (!\GPIO0_SA[1]~input_o\ & (!\SW[1]~input_o\ & !\GPIO0_SB[1]~input_o\)))) # (!\inst|inst|inst7|5~0_combout\ & ((\GPIO0_SA[1]~input_o\ & 
+-- ((\SW[1]~input_o\) # (!\GPIO0_SB[1]~input_o\))) # (!\GPIO0_SA[1]~input_o\ & ((\GPIO0_SB[1]~input_o\)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1101100101000110",
+	lut_mask => "1110010101010010",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \inst|inst|inst7|5~0_combout\,
-	datab => \GPIO0_SB[1]~input_o\,
-	datac => \SW[1]~input_o\,
-	datad => \GPIO0_SA[1]~input_o\,
+	datab => \SW[1]~input_o\,
+	datac => \GPIO0_SA[1]~input_o\,
+	datad => \GPIO0_SB[1]~input_o\,
 	combout => \inst|inst|inst7|5~1_combout\);
 
--- Location: LCCOMB_X66_Y30_N24
+-- Location: LCCOMB_X66_Y30_N4
 \inst|inst4|inst7|5~0\ : cycloneive_lcell_comb
 -- Equation(s):
--- \inst|inst4|inst7|5~0_combout\ = (\GPIO0_SA[0]~input_o\ & ((\GPIO0_SB[0]~input_o\) # ((!\SW[0]~input_o\ & \SW[1]~input_o\)))) # (!\GPIO0_SA[0]~input_o\ & ((\SW[1]~input_o\ & (!\SW[0]~input_o\ & \GPIO0_SB[0]~input_o\)) # (!\SW[1]~input_o\ & 
+-- \inst|inst4|inst7|5~0_combout\ = (\GPIO0_SA[0]~input_o\ & ((\GPIO0_SB[0]~input_o\) # ((\SW[1]~input_o\ & !\SW[0]~input_o\)))) # (!\GPIO0_SA[0]~input_o\ & ((\SW[1]~input_o\ & (!\SW[0]~input_o\ & \GPIO0_SB[0]~input_o\)) # (!\SW[1]~input_o\ & 
 -- ((!\GPIO0_SB[0]~input_o\)))))
 
 -- pragma translate_off
 GENERIC MAP (
-	lut_mask => "1011101000100101",
+	lut_mask => "1010111000011001",
 	sum_lutc_input => "datac")
 -- pragma translate_on
 PORT MAP (
 	dataa => \GPIO0_SA[0]~input_o\,
-	datab => \SW[0]~input_o\,
-	datac => \SW[1]~input_o\,
+	datab => \SW[1]~input_o\,
+	datac => \SW[0]~input_o\,
 	datad => \GPIO0_SB[0]~input_o\,
 	combout => \inst|inst4|inst7|5~0_combout\);
+
+ww_LEDM_C(4) <= \LEDM_C[4]~output_o\;
 
 ww_LEDM_C(3) <= \LEDM_C[3]~output_o\;
 
